@@ -1,0 +1,18 @@
+{
+  "name": "emeraude-initial-state-processors",
+  "version": "1.0.0",
+  "description": "Vue processors for state management and routing.",
+  "keywords": [
+    "emeraude"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Definux/emeraude-initial-state-processors-node-package.git"
+  },
+  "dependencies": {
+    "vue": "^2.6.12",
+    "vue-router": "^3.4.3",
+    "vuex": "^3.5.1",
+    "vue-i18n": "^8.21.0"
+  }
+}
