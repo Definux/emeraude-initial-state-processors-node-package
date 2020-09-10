@@ -1,7 +1,8 @@
 {
   "name": "emeraude-initial-state-processors",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Vue processors for state management and routing.",
+  "main": "src/index.js",
   "keywords": [
     "emeraude"
   ],
