@@ -1,4 +1,4 @@
-export default {
+const initialState = {
     state: {
         routeName: null,
         stateString: null,
@@ -55,3 +55,12 @@ export default {
         },
     }
 };
+
+module.exports = {
+    created() {
+        this.$store.registerModule('main', initialState);
+        this.$store.dispatch('mapInitialState');
+        this.$i18n.locale = this.$store.getters.languageCode;
+    }
+};
+

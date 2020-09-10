@@ -2,7 +2,7 @@ const redirectToLogin = function(redirectUrl) {
     location.href = '/login?ReturnUrl=' + encodeURIComponent(redirectUrl);
 };
 
-export const useEmPageRouter  = function (router, store) {
+module.exports = function (router, store) {
     router.beforeEach((routeTo, routeFrom, next) => {
         if (typeof(fetch) !== 'undefined') {
             fetch(routeTo.path, {
@@ -32,4 +32,4 @@ export const useEmPageRouter  = function (router, store) {
             }
         }
     });
-}
+};
