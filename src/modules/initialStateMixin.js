@@ -1,3 +1,5 @@
+const { newGuid } = require('../utils/functions');
+
 const initialState = {
     state: {
         routeName: null,
@@ -52,6 +54,9 @@ const initialState = {
         },
         updateData(context, value) {
             context.commit('SET_DATA', value);
+        },
+        resetStateString(context) {
+            context.commit('SET_STATE_STRING', newGuid());
         },
     }
 };

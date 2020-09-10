@@ -1,4 +1,4 @@
 module.exports = {
-    useEmPageRouter: require('./routerBeforeEachHook'),
-    initialStateMixin: require('./initialStateMixin')
+    useEmPageRouter: require('./modules/routerBeforeEachHook'),
+    initialStateMixin: require('./modules/initialStateMixin')
 };
