@@ -4,8 +4,8 @@ const redirectToLogin = function(redirectUrl) {
 
 module.exports = function (router, store) {
     router.beforeEach((routeTo, routeFrom, next) => {
-        if (typeof(fetch) !== 'undefined') {
-            if (routeTo.path !== routeFrom.path) {
+        if (typeof(fetch) !== undefined) {
+            if (store.state.stateString !== undefined) {
                 fetch(routeTo.path, {
                     method: 'POST',
                     headers: {
