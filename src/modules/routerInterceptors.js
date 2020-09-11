@@ -17,7 +17,8 @@ module.exports = function (router, store) {
                 })
                     .then(response => response.json())
                     .then(responseData => {
-                        store.dispatch('updateData', responseData.data);
+                        store.dispatch('updateViewData', responseData.viewData);
+                        store.dispatch('updateViewModel', responseData.viewModel);
                         next();
                     })
                     .catch(() => {

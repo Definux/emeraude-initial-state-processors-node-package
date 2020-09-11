@@ -7,7 +7,8 @@ const initialState = {
         user: null,
         languageCode: null,
         languageId: 0,
-        data: null,
+        viewModel: null,
+        viewData: []
     },
 
     getters: {
@@ -26,8 +27,11 @@ const initialState = {
         languageId(state) {
             return state.languageId;
         },
-        data(state) {
-            return state.data;
+        viewModel(state) {
+            return state.viewModel;
+        },
+        viewData(state) {
+            return state.viewData;
         },
     },
 
@@ -35,8 +39,11 @@ const initialState = {
         SET_STATE_STRING(state, value) {
             state.stateString = value;
         },
-        SET_DATA(state, value) {
-            state.data = value;
+        SET_VIEW_MODEL(state, value) {
+            state.viewModel = value;
+        },
+        SET_VIEW_DATA(state, value) {
+            state.viewData = value;
         },
     },
 
@@ -47,13 +54,17 @@ const initialState = {
             state.user = rootState.data.user;
             state.languageCode = rootState.data.languageCode;
             state.languageId = rootState.data.languageId;
-            state.data = rootState.data.data;
+            state.viewModel = rootState.data.viewModel;
+            state.viewData = rootState.data.viewData;
         },
         updateStateString(context, value) {
             context.commit('SET_STATE_STRING', value);
         },
-        updateData(context, value) {
-            context.commit('SET_DATA', value);
+        updateViewData(context, value) {
+            context.commit('SET_VIEW_DATA', value);
+        },
+        updateViewModel(context, value) {
+            context.commit('SET_VIEW_MODEL', value);
         },
         resetStateString(context) {
             context.commit('SET_STATE_STRING', newGuid());
