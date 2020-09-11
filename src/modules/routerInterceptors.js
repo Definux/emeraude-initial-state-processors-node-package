@@ -24,6 +24,9 @@ module.exports = function (router, store) {
                         redirectToLogin(routeTo.path);
                     });
             }
+            else {
+                next();
+            }
         }
         else {
             if (process.env.VUE_ENV === 'server') {
