@@ -2,6 +2,10 @@ const redirectToLogin = function(redirectUrl) {
     location.href = '/login?ReturnUrl=' + encodeURIComponent(redirectUrl);
 };
 
+const notFoundResult = function() {
+    location.href = '/404';
+};
+
 module.exports = function (router, store) {
     router.beforeEach((routeTo, routeFrom, next) => {
         if (typeof(fetch) !== undefined) {
@@ -15,10 +19,17 @@ module.exports = function (router, store) {
                     body: null,
                     credentials: 'include'
                 })
-                    .then(response => response.json())
+                    .then(response => {
+                        if (response.ok) {
+                            return response.json();
+                        }
+
+                        notFoundResult();
+                    })
                     .then(responseData => {
                         store.dispatch('updateViewData', responseData.viewData);
                         store.dispatch('updateViewModel', responseData.viewModel);
+                        store.dispatch('updateMetaTags', responseData.metaTags);
                         next();
                     })
                     .catch(() => {

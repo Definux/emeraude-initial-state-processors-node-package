@@ -8,7 +8,8 @@ const initialState = {
         languageCode: null,
         languageId: 0,
         viewModel: null,
-        viewData: []
+        viewData: [],
+        metaTags: null
     },
 
     getters: {
@@ -33,6 +34,9 @@ const initialState = {
         viewData(state) {
             return state.viewData;
         },
+        metaTags(state) {
+            return state.metaTags;
+        }
     },
 
     mutations: {
@@ -45,6 +49,9 @@ const initialState = {
         SET_VIEW_DATA(state, value) {
             state.viewData = value;
         },
+        SET_META_TAGS(state, value) {
+            state.metaTags = value;
+        }
     },
 
     actions: {
@@ -56,6 +63,7 @@ const initialState = {
             state.languageId = rootState.data.languageId;
             state.viewModel = rootState.data.viewModel;
             state.viewData = rootState.data.viewData;
+            state.metaTags = rootState.data.metaTags;
         },
         updateStateString(context, value) {
             context.commit('SET_STATE_STRING', value);
@@ -65,6 +73,9 @@ const initialState = {
         },
         updateViewModel(context, value) {
             context.commit('SET_VIEW_MODEL', value);
+        },
+        updateMetaTags(context, value) {
+            context.commit('SET_META_TAGS', value);
         },
         resetStateString(context) {
             context.commit('SET_STATE_STRING', newGuid());
