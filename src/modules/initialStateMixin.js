@@ -76,6 +76,24 @@ const initialState = {
         },
         updateMetaTags(context, value) {
             context.commit('SET_META_TAGS', value);
+            try {
+                for(let key in value) {
+                    if (value[key] !== null && value[key].key !== undefined) {
+                        let existingMetaTag = document.querySelector('meta[' + value[key].keyName + '="' + value[key].key + '"]');
+                        if (existingMetaTag !== null && value[key].value !== null) {
+                            existingMetaTag.setAttribute(value[key].valueName, value[key].value);
+                        }
+                    }
+                }
+
+                document.title = value.title.value;
+                let canonicalTag = document.querySelector('link[rel="canonical"]');
+                if (canonicalTag !== null) {
+                    canonicalTag.setAttribute('href', location.origin + value.canonical);
+                }
+            }
+            catch (e) {
+            }
         },
         resetStateString(context) {
             context.commit('SET_STATE_STRING', newGuid());

@@ -23,14 +23,17 @@ module.exports = function (router, store) {
                         if (response.ok) {
                             return response.json();
                         }
-
-                        notFoundResult();
                     })
                     .then(responseData => {
-                        store.dispatch('updateViewData', responseData.viewData);
-                        store.dispatch('updateViewModel', responseData.viewModel);
-                        store.dispatch('updateMetaTags', responseData.metaTags);
-                        next();
+                        if (responseData === undefined) {
+                            notFoundResult();
+                        }
+                        else {
+                            store.dispatch('updateViewData', responseData.viewData);
+                            store.dispatch('updateViewModel', responseData.viewModel);
+                            store.dispatch('updateMetaTags', responseData.metaTags);
+                            next();
+                        }
                     })
                     .catch(() => {
                         redirectToLogin(routeTo.path);
