@@ -6,16 +6,18 @@ const notFoundResult = function() {
     location.href = '/404';
 };
 
+const defaultPostHeaders = {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json'
+};
+
 module.exports = function (router, store) {
     router.beforeEach((routeTo, routeFrom, next) => {
         if (typeof(fetch) !== undefined) {
             if (store.getters.stateString !== undefined) {
                 fetch(routeTo.path, {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
+                    headers: defaultPostHeaders,
                     body: null,
                     credentials: 'include'
                 })
